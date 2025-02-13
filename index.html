@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Security and Passport Evaluation</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Security and Passport Evaluation</h1>
+        <label for="origin">Country of Origin:</label>
+        <input type="text" id="origin" name="origin">
+        
+        <label for="destination">Country of Destination:</label>
+        <input type="text" id="destination" name="destination">
+        
+        <div class="buttons">
+            <button onclick="evaluate()">Evaluate</button>
+            <button onclick="resetFields()">Reset</button>
+        </div>
+        
+        <div id="result"></div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
