@@ -2,9 +2,14 @@ const schengenCountries = ["Austria", "Belgium", "Czech Republic", "Denmark", "E
 const ossCountries = ["United Kingdom", "Switzerland"];
 
 function evaluate() {
-    const origin = document.getElementById("origin").value;
-    const destination = document.getElementById("destination").value;
+    const origin = document.getElementById("origin").value.trim();
+    const destination = document.getElementById("destination").value.trim();
     const result = document.getElementById("result");
+
+    if (!origin || !destination) {
+        result.innerHTML = "Please enter both origin and destination countries.";
+        return;
+    }
 
     const isOriginSchengen = schengenCountries.includes(origin);
     const isDestinationSchengen = schengenCountries.includes(destination);
@@ -23,4 +28,3 @@ function resetFields() {
     document.getElementById("destination").value = "";
     document.getElementById("result").innerHTML = "";
 }
-
