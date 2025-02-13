@@ -4,10 +4,9 @@ const ossCountries = ["United Kingdom", "Switzerland"];
 function evaluate() {
     const origin = document.getElementById("origin").value.trim();
     const destination = document.getElementById("destination").value.trim();
-    const result = document.getElementById("result");
 
     if (!origin || !destination) {
-        result.innerHTML = "Please enter both origin and destination countries.";
+        alert("Please enter both origin and destination countries.");
         return;
     }
 
@@ -15,16 +14,18 @@ function evaluate() {
     const isDestinationSchengen = schengenCountries.includes(destination);
     const isOss = ossCountries.includes(origin) && ossCountries.includes(destination);
 
-    let message = `Origin: ${origin} (${isOriginSchengen ? "Schengen" : "Non-Schengen"})<br>`;
-    message += `Destination: ${destination} (${isDestinationSchengen ? "Schengen" : "Non-Schengen"})<br>`;
-    message += `Passport control: ${isOriginSchengen && isDestinationSchengen ? "No" : "Yes"}<br>`;
-    message += `Additional security check: ${isOss ? "No" : "Yes"}`;
+    let passportControl = !isOriginSchengen || !isDestinationSchengen;
+    let securityCheck = !isOss;
 
-    result.innerHTML = message;
+    let message = `Origin: ${origin} (${isOriginSchengen ? "Schengen" : "Non-Schengen"})\n`;
+    message += `Destination: ${destination} (${isDestinationSchengen ? "Schengen" : "Non-Schengen"})\n`;
+    message += `Passport control: ${passportControl ? "Yes" : "No"}\n`;
+    message += `Additional security check: ${securityCheck ? "Yes" : "No"}`;
+
+    alert(message);
 }
 
 function resetFields() {
     document.getElementById("origin").value = "";
     document.getElementById("destination").value = "";
-    document.getElementById("result").innerHTML = "";
 }
