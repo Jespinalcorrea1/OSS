@@ -56,11 +56,3 @@ button {
 button:hover {
     background-color: #0056b3;
 }
-
-#result {
-    margin-top: 20px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    background-color: #f9f9f9;
-}
