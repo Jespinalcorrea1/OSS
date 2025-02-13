@@ -1,14 +1,23 @@
+const countries = ["Austria", "Belgium", "Czech Republic", "Denmark", "Estonia", "Finland", "France", "Germany", "Greece", "Hungary", "Iceland", "Italy", "Latvia", "Liechtenstein", "Lithuania", "Luxembourg", "Malta", "Netherlands", "Norway", "Poland", "Portugal", "Slovakia", "Slovenia", "Spain", "Sweden", "Switzerland", "Bulgaria", "Romania", "Croatia", "United Kingdom", "Kosovo", "United States", "Canada", "Australia", "Japan", "China", "India", "Brazil", "Mexico"];
 const schengenCountries = ["Austria", "Belgium", "Czech Republic", "Denmark", "Estonia", "Finland", "France", "Germany", "Greece", "Hungary", "Iceland", "Italy", "Latvia", "Liechtenstein", "Lithuania", "Luxembourg", "Malta", "Netherlands", "Norway", "Poland", "Portugal", "Slovakia", "Slovenia", "Spain", "Sweden", "Switzerland", "Bulgaria", "Romania", "Croatia"];
 const ossCountries = ["United Kingdom", "Switzerland"];
 
-function evaluate() {
-    const origin = document.getElementById("origin").value.trim();
-    const destination = document.getElementById("destination").value.trim();
+function populateSelects() {
+    const originSelect = document.getElementById("origin");
+    const destinationSelect = document.getElementById("destination");
 
-    if (!origin || !destination) {
-        alert("Please enter both origin and destination countries.");
-        return;
-    }
+    countries.forEach(country => {
+        const option = document.createElement("option");
+        option.value = country;
+        option.textContent = country;
+        originSelect.appendChild(option.cloneNode(true));
+        destinationSelect.appendChild(option);
+    });
+}
+
+function evaluate() {
+    const origin = document.getElementById("origin").value;
+    const destination = document.getElementById("destination").value;
 
     const isOriginSchengen = schengenCountries.includes(origin);
     const isDestinationSchengen = schengenCountries.includes(destination);
@@ -29,3 +38,5 @@ function resetFields() {
     document.getElementById("origin").value = "";
     document.getElementById("destination").value = "";
 }
+
+document.addEventListener("DOMContentLoaded", populateSelects);
